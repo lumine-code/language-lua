@@ -18,6 +18,7 @@
     "highlightsQuery": "tree-sitter-lua/highlights.scm",
     "foldsQuery": "tree-sitter-lua/folds.scm",
     "indentsQuery": "tree-sitter-lua/indents.scm",
-    "tagsQuery": "tree-sitter-lua/tags.scm"
+    "tagsQuery": "tree-sitter-lua/tags.scm",
+    "localsQuery": "tree-sitter-lua/locals.scm"
   }
 }
