@@ -1,7 +1,7 @@
 {
   "name": "Lua",
   "scopeName": "source.lua",
-  "type": "modern-tree-sitter",
+  "type": "tree-sitter",
   "parser": "tree-sitter-lua",
   "injectionRegex": "^(lua)$",
   "fileTypes": ["lua", "rockspec"],
