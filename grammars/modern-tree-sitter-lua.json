@@ -1,0 +1,23 @@
+{
+  "name": "Lua",
+  "scopeName": "source.lua",
+  "type": "modern-tree-sitter",
+  "parser": "tree-sitter-lua",
+  "injectionRegex": "^(lua)$",
+  "fileTypes": ["lua", "rockspec"],
+  "comments": {
+    "start": "-- "
+  },
+  "treeSitter": {
+    // Pin a tag or a full SHA, never a branch. Verify the ref is on the main
+    // line before trusting it — `gh api repos/OWNER/REPO/compare/<ref>...HEAD`
+    // reporting `diverged` or a nonzero `behind` means it is not.
+    "parserSource": "github:tree-sitter-grammars/tree-sitter-lua#v0.5.0",
+    "wasmBuildTool": "tree-sitter-cli#v0.26.11",
+    "grammar": "tree-sitter-lua/tree-sitter-lua.wasm",
+    "highlightsQuery": "tree-sitter-lua/highlights.scm",
+    "foldsQuery": "tree-sitter-lua/folds.scm",
+    "indentsQuery": "tree-sitter-lua/indents.scm",
+    "tagsQuery": "tree-sitter-lua/tags.scm"
+  }
+}
