@@ -4,7 +4,7 @@ Lua language support.
 
 ## Features
 
-- **Grammars**: provides Tree-sitter grammars.
+- **Grammars**: provides Tree-sitter grammars, built from [tree-sitter-lua](https://github.com/tree-sitter-grammars/tree-sitter-lua).
 - **Syntax highlighting**: full tree-sitter grammar coverage for Lua files, including LuaDoc comments and the three string forms.
 - **Folding**: folds functions, blocks and tables from the parse tree rather than by indentation.
 - **Auto-indentation**: indents block bodies and lines up `else` and `elseif` with their `if`.
