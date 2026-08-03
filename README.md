@@ -10,6 +10,10 @@ Lua language support.
 - **Auto-indentation**: indents block bodies and lines up `else` and `elseif` with their `if`.
 - **Symbol navigation**: functions, methods and table fields bound to functions.
 
+## Installation
+
+To install `language-lua` search for _language-lua_ in the Install pane of the Lumine settings or run `lumine --install lumine-code/language-lua`.
+
 ## Services
 
 - **hyperlink.injection** (`^1.0.0`): consumed to highlight URLs inside Lua files as clickable links.
