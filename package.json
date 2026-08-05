@@ -17,7 +17,7 @@
   },
   "license": "MIT",
   "engines": {
-    "lumine": "*"
+    "lumine": "^1.0.0"
   },
   "scripts": {
     "test": "lumine --test spec",
