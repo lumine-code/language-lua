@@ -108,12 +108,18 @@
 "::" @punctuation.definition.label.lua
 
 ; Brackets, named for what each pair delimits.
-(arguments
-  "(" @punctuation.definition.arguments.begin.bracket.round.lua
-  ")" @punctuation.definition.arguments.end.bracket.round.lua)
-(parameters
-  "(" @punctuation.definition.parameters.begin.bracket.round.lua
-  ")" @punctuation.definition.parameters.end.bracket.round.lua)
+(("(" @punctuation.definition.arguments.begin.bracket.round.lua)
+  (#is? test.childOfType arguments)
+  (#is? test.first true))
+((")" @punctuation.definition.arguments.end.bracket.round.lua)
+  (#is? test.childOfType arguments)
+  (#is? test.last true))
+(("(" @punctuation.definition.parameters.begin.bracket.round.lua)
+  (#is? test.childOfType parameters)
+  (#is? test.first true))
+((")" @punctuation.definition.parameters.end.bracket.round.lua)
+  (#is? test.childOfType parameters)
+  (#is? test.last true))
 (parenthesized_expression
   "(" @punctuation.definition.expression.begin.bracket.round.lua
   ")" @punctuation.definition.expression.end.bracket.round.lua)
@@ -174,8 +180,8 @@
   field: (identifier) @variable.other.member.lua)
 
 ; Functions
-(parameters
-  (identifier) @variable.parameter.lua)
+((identifier) @variable.parameter.lua
+  (#is? test.childOfType parameters))
 
 (vararg_expression) @variable.parameter.language.lua
 

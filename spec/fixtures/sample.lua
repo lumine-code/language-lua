@@ -48,6 +48,8 @@ function M.run(n)
 --  ^ keyword.control.return
 --         ^ support.other.module
 --              ^ support.other.function
+--                   ^ punctuation.definition.arguments.begin.bracket.round
+--                     ^ punctuation.definition.arguments.end.bracket.round
 
   end
 --^ keyword.control
