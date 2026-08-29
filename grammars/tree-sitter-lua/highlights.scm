@@ -122,9 +122,10 @@
   "[" @punctuation.definition.index.begin.bracket.square.lua
   "]" @punctuation.definition.index.end.bracket.square.lua)
 
-(table_constructor
-  "{" @punctuation.definition.table.begin.bracket.curly.lua
-  "}" @punctuation.definition.table.end.bracket.curly.lua)
+("{" @punctuation.definition.table.begin.bracket.curly.lua
+  (#is? test.childOfType "table_constructor"))
+("}" @punctuation.definition.table.end.bracket.curly.lua
+  (#is? test.childOfType "table_constructor"))
 
 ; Variables
 (identifier) @variable.other.lua
@@ -201,10 +202,10 @@
     .
     value: (function_definition)))
 
-(table_constructor
-  (field
-    name: (identifier) @entity.name.function.lua
-    value: (function_definition)))
+(field
+  name: (identifier) @entity.name.function.lua
+  value: (function_definition)
+  (#is? test.typeAt "parent.parent table_constructor"))
 
 (function_call
   name: [

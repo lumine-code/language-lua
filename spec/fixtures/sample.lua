@@ -22,6 +22,11 @@ local t = { a = 1, b = 'two' }
 --                      ^ string.quoted.single
 --                           ^ punctuation.definition.table.end.bracket.curly
 
+local handlers = {
+  run = function() end
+--^ entity.name.function
+}
+
 local s = "text"
 --        ^ punctuation.definition.string.begin
 --         ^ string.quoted.double
