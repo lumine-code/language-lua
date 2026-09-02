@@ -3,7 +3,7 @@
   "scopeName": "source.lua",
   "type": "tree-sitter",
   "parser": "tree-sitter-lua",
-  "injectionRegex": "^(lua)$",
+  "injectionNames": ["lua"],
   "fileTypes": ["lua", "rockspec"],
   "comments": {
     "start": "-- "
@@ -14,11 +14,11 @@
     // reporting `diverged` or a nonzero `behind` means it is not.
     "parserSource": "github:tree-sitter-grammars/tree-sitter-lua#v0.5.0",
     "wasmBuildTool": "tree-sitter-cli#v0.26.13",
-    "grammar": "tree-sitter-lua/tree-sitter-lua.wasm",
-    "highlightsQuery": "tree-sitter-lua/highlights.scm",
-    "foldsQuery": "tree-sitter-lua/folds.scm",
-    "indentsQuery": "tree-sitter-lua/indents.scm",
-    "tagsQuery": "tree-sitter-lua/tags.scm",
-    "localsQuery": "tree-sitter-lua/locals.scm"
+    "grammar": "lua.wasm",
+    "highlightsQuery": "lua-highlights.scm",
+    "foldsQuery": "lua-folds.scm",
+    "indentsQuery": "lua-indents.scm",
+    "tagsQuery": "lua-tags.scm",
+    "localsQuery": "lua-locals.scm"
   }
 }
