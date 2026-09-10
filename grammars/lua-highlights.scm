@@ -129,9 +129,9 @@
   "]" @punctuation.definition.index.end.bracket.square.lua)
 
 ("{" @punctuation.definition.table.begin.bracket.curly.lua
-  (#is? test.childOfType "table_constructor"))
+  (#is? test.childOfType table_constructor))
 ("}" @punctuation.definition.table.end.bracket.curly.lua
-  (#is? test.childOfType "table_constructor"))
+  (#is? test.childOfType table_constructor))
 
 ; Variables
 (identifier) @variable.other.lua
@@ -148,11 +148,10 @@
 ((identifier) @keyword.control.lua
   (#eq? @keyword.control.lua "coroutine"))
 
-(variable_list
-  (attribute
-    "<" @punctuation.definition.attribute.begin.bracket.angle.lua
-    (identifier) @entity.other.attribute-name.lua
-    ">" @punctuation.definition.attribute.end.bracket.angle.lua))
+(attribute
+  "<" @punctuation.definition.attribute.begin.bracket.angle.lua
+  (identifier) @entity.other.attribute-name.lua
+  ">" @punctuation.definition.attribute.end.bracket.angle.lua)
 
 ; Labels
 (label_statement
@@ -210,8 +209,7 @@
 
 (field
   name: (identifier) @entity.name.function.lua
-  value: (function_definition)
-  (#is? test.typeAt "parent.parent table_constructor"))
+  value: (function_definition))
 
 (function_call
   name: [
@@ -223,7 +221,7 @@
   ])
 
 (function_call
-  (identifier) @support.function.builtin.lua
+  name: (identifier) @support.function.builtin.lua
   (#any-of? @support.function.builtin.lua
     ; built-in functions in Lua 5.1
     "assert" "collectgarbage" "dofile" "error" "getfenv" "getmetatable" "ipairs" "load" "loadfile"
@@ -239,7 +237,8 @@
 ((comment) @comment.block.lua
   (#match? @comment.block.lua "^--\\[\\["))
 ((comment) @comment.line.double-dash.lua
-  (#not-match? @comment.line.double-dash.lua "^--\\[\\["))
+  (#not-match? @comment.line.double-dash.lua "^--\\[\\[")
+  (#set! adjust.endBeforeFirstMatchOf "\\r?$"))
 
 ((comment) @punctuation.definition.comment.lua
   (#set! adjust.endAfterFirstMatchOf "^--"))
@@ -251,7 +250,8 @@
 ((comment) @comment.block.documentation.lua
   (#match? @comment.block.documentation.lua "^--\\s?@"))
 
-(hash_bang_line) @keyword.control.directive.lua
+((hash_bang_line) @keyword.control.directive.lua
+  (#set! adjust.endBeforeFirstMatchOf "\\r?$"))
 
 (number) @constant.numeric.lua
 
