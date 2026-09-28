@@ -36,7 +36,7 @@ describe("Lua Tree-sitter grammar", () => {
     return editor.scopeDescriptorForBufferPosition([row, column]).getScopesArray();
   }
 
-  function rawCaptures(startRow, endRow) {
+  async function rawCaptures(startRow, endRow) {
     const options =
       startRow == null
         ? undefined
@@ -44,8 +44,8 @@ describe("Lua Tree-sitter grammar", () => {
             startPosition: new Point(startRow, 0),
             endPosition: new Point(endRow, 0),
           };
-    const layer = languageMode.rootLanguageLayer;
-    return layer.queries.highlightsQuery.captures(layer.tree.rootNode, options);
+    const groups = await editor.getGrammarQueryCaptureGroups("highlightsQuery", options);
+    return groups.find(({ grammar }) => grammar === editor.getGrammar())?.captures ?? [];
   }
 
   it("tokenizes the fixture", async () => {
@@ -104,7 +104,7 @@ end`);
   )
 end`);
 
-    const parameterCaptures = rawCaptures(2, 4).filter(
+    const parameterCaptures = (await rawCaptures(2, 4)).filter(
       (capture) =>
         capture.name === "variable.parameter.lua" ||
         capture.name.startsWith("punctuation.definition.parameters."),
@@ -112,13 +112,13 @@ end`);
     expect(parameterCaptures.map((capture) => capture.node.startPosition.row)).toEqual([2, 3]);
     expect(parameterCaptures.every((capture) => capture.node.startPosition.row >= 2)).toBe(true);
 
-    const tableCaptures = rawCaptures(6, 8).filter((capture) =>
+    const tableCaptures = (await rawCaptures(6, 8)).filter((capture) =>
       capture.name.startsWith("punctuation.definition.table."),
     );
     expect(tableCaptures.map((capture) => capture.node.startPosition.row)).toEqual([7]);
     expect(tableCaptures.every((capture) => capture.node.startPosition.row >= 6)).toBe(true);
 
-    const argumentCaptures = rawCaptures(10, 12).filter((capture) =>
+    const argumentCaptures = (await rawCaptures(10, 12)).filter((capture) =>
       capture.name.startsWith("punctuation.definition.arguments."),
     );
     expect(argumentCaptures.map((capture) => capture.node.startPosition.row)).toEqual([11]);
@@ -131,7 +131,7 @@ end`);
     lines.push("}");
     await setUp(lines.join("\r\n"));
 
-    const tileCaptures = rawCaptures(2998, 3004);
+    const tileCaptures = await rawCaptures(2998, 3004);
     expect(tileCaptures.length).toBeLessThanOrEqual(64);
     expect(
       tileCaptures
@@ -151,7 +151,7 @@ end`);
     });
     lines.push("= nil");
     await setUp(lines.join("\r\n"));
-    expect(languageMode.tree.rootNode.hasError).toBe(false);
+    expect((await editor.getSyntaxDiagnostics()).hasError).toBe(false);
 
     expect(scopesAt(0, "<")).toContain("punctuation.definition.attribute.begin.bracket.angle.lua");
     expect(scopesAt(0, "const")).toContain("entity.other.attribute-name.lua");
@@ -159,7 +159,7 @@ end`);
 
     const startRow = 2998;
     const endRow = startRow + 6;
-    const captures = rawCaptures(startRow, endRow);
+    const captures = await rawCaptures(startRow, endRow);
     expect(captures.length).toBeLessThanOrEqual(72);
     expect(
       captures
