@@ -19,6 +19,7 @@
     "foldsQuery": "lua-folds.scm",
     "indentsQuery": "lua-indents.scm",
     "tagsQuery": "lua-tags.scm",
-    "localsQuery": "lua-locals.scm"
+    "localsQuery": "lua-locals.scm",
+    "injectionsQuery": "lua-injections.scm"
   }
 }

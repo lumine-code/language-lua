@@ -44,8 +44,8 @@ describe("Lua Tree-sitter grammar", () => {
             startPosition: new Point(startRow, 0),
             endPosition: new Point(endRow, 0),
           };
-    const groups = await editor.getGrammarQueryCaptureGroups("highlightsQuery", options);
-    return groups.find(({ grammar }) => grammar === editor.getGrammar())?.captures ?? [];
+    const query = await editor.getGrammar().getQuery("highlightsQuery");
+    return query.captures(editor.languageMode.tree.rootNode, options);
   }
 
   it("tokenizes the fixture", async () => {
@@ -151,7 +151,7 @@ end`);
     });
     lines.push("= nil");
     await setUp(lines.join("\r\n"));
-    expect((await editor.getSyntaxDiagnostics()).hasError).toBe(false);
+    expect(editor.languageMode.tree.rootNode.hasError).toBe(false);
 
     expect(scopesAt(0, "<")).toContain("punctuation.definition.attribute.begin.bracket.angle.lua");
     expect(scopesAt(0, "const")).toContain("entity.other.attribute-name.lua");
