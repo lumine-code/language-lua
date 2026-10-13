@@ -10,6 +10,8 @@ Lua language support.
 - **Auto-indentation**: indents block bodies and lines up `else` and `elseif` with their `if`.
 - **Symbol navigation**: functions, methods and table fields bound to functions.
 
+![Lua syntax highlighting at the default editor font size.](.github/demo.png)
+
 ## Installation
 
 To install `language-lua` search for it in the Install pane of the Lumine settings, or run the command `lumine --install lumine-code/language-lua`.

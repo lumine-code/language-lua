@@ -1,0 +1,16 @@
+{
+  "title": "language-lua",
+  "description": "Lua syntax highlighting in the editor.",
+  "recordedOn": "2026-10-13",
+  "sourceRevision": "ae1af2a8473df4f0c512a7aa812b0c26a14e5064",
+  "mode": "normal",
+  "fontSettings": "default",
+  "images": [
+    {
+      "file": "demo.png",
+      "label": "Lua syntax highlighting at the default editor font size.",
+      "width": 1100,
+      "height": 626
+    }
+  ]
+}
