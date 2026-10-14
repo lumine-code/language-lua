@@ -1,16 +1,61 @@
 {
   "title": "language-lua",
-  "description": "Lua syntax highlighting in the editor.",
-  "recordedOn": "2026-10-13",
-  "sourceRevision": "ae1af2a8473df4f0c512a7aa812b0c26a14e5064",
+  "description": "Lua syntax highlighting at the default editor font size.",
+  "recordedOn": "2026-10-14",
+  "sourceRevision": "612996c7af22ec5c0cff24f92b1236227fe96f8f",
+  "themeSourceRevision": "14a69683b0e3238e2bc128fbfae3866c1e4ee9c6",
   "mode": "normal",
   "fontSettings": "default",
+  "scenario": "demo.js",
+  "recipeHash": "e82aaef019a1aafb82a47e7b8f2abdccf520e3cab82c8109253950c6524656fc",
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "electron": "44.7.0",
+    "chrome": "152.0.7977.130",
+    "devicePixelRatio": 1,
+    "locale": "en-GB",
+    "fontFamily": "Fira Code, Menlo, DejaVu Sans Mono, Consolas, monospace",
+    "fontSize": 14,
+    "themes": ["one-day-syntax", "one-day-ui"]
+  },
+  "viewport": { "width": 1100, "height": 626 },
+  "cornerRadius": 10,
+  "sources": {
+    "editor": {
+      "revision": "c4d7a05fe6960ae6fb041981d6cf13e9c0286b17",
+      "dirty": true,
+      "workingTreeHash": "c8c1ecbfffafd0d4ca1f3ef718222e809b0d3f3aabe3d890d222f58976eb8817"
+    },
+    "package": {
+      "revision": "612996c7af22ec5c0cff24f92b1236227fe96f8f",
+      "dirty": true,
+      "workingTreeHash": "73ccb27996e05411ce5879e13f2b264cedcd913cbb8c626ea64da006acddb3bb"
+    },
+    "language-lua": {
+      "revision": "612996c7af22ec5c0cff24f92b1236227fe96f8f",
+      "dirty": true,
+      "workingTreeHash": "73ccb27996e05411ce5879e13f2b264cedcd913cbb8c626ea64da006acddb3bb"
+    },
+    "one-theme": {
+      "revision": "14a69683b0e3238e2bc128fbfae3866c1e4ee9c6",
+      "dirty": true,
+      "workingTreeHash": "50ec2f83a6347dd8113870992ec4eb2be4014f3d9e12213c2f51b543f1eca793"
+    }
+  },
+  "fixtures": [
+    {
+      "file": "example.lua",
+      "sha256": "9e3e22e5fa9e2d6e232941b26538ef3a35e6acfc9db3d938e77436c7167cc5bc"
+    }
+  ],
   "images": [
     {
       "file": "demo.png",
       "label": "Lua syntax highlighting at the default editor font size.",
       "width": 1100,
-      "height": 626
+      "height": 626,
+      "sha256": "68091badc7fcdb1db7dd451ba14d3cf111cc7b47920b51bb7eb02372501c4653"
     }
   ]
 }
