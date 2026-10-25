@@ -232,12 +232,12 @@
     "__pow" "__shl" "__shr" "__sub" "__tostring" "__unm"))
 
 ; Others
-; `--[[ … ]]` is a block comment; anything else on the line is a line comment.
+; Long brackets (`--[[ … ]]`, `--[=[ … ]=]`, etc.) delimit block comments.
 ; A backslash has to survive the query parser to reach the regex, hence `\\`.
 ((comment) @comment.block.lua
-  (#match? @comment.block.lua "^--\\[\\["))
+  (#match? @comment.block.lua "^--\\[=*\\["))
 ((comment) @comment.line.double-dash.lua
-  (#not-match? @comment.line.double-dash.lua "^--\\[\\[")
+  (#not-match? @comment.line.double-dash.lua "^--\\[=*\\[")
   (#set! adjust.endBeforeFirstMatchOf "\\r?$"))
 
 ((comment) @punctuation.definition.comment.lua
@@ -245,10 +245,10 @@
 
 ; LuaDoc: `---` and `-- @annotation`. `%s` in the upstream Lua pattern means
 ; whitespace, which is `\\s` here.
-((comment) @comment.block.documentation.lua
-  (#match? @comment.block.documentation.lua "^---"))
-((comment) @comment.block.documentation.lua
-  (#match? @comment.block.documentation.lua "^--\\s?@"))
+((comment) @comment.line.documentation.lua
+  (#match? @comment.line.documentation.lua "^---"))
+((comment) @comment.line.documentation.lua
+  (#match? @comment.line.documentation.lua "^--\\s?@"))
 
 ((hash_bang_line) @keyword.control.directive.lua
   (#set! adjust.endBeforeFirstMatchOf "\\r?$"))
