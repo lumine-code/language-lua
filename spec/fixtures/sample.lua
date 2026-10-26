@@ -3,7 +3,7 @@
 -- Scopes match by prefix, so the trailing `.lua` segment is left off.
 
 --- A LuaDoc comment.
--- <- comment.block.documentation
+-- <- comment.line.documentation
 
 --[[ a block comment ]]
 -- <- comment.block
