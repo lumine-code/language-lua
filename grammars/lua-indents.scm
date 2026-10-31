@@ -1,3 +1,24 @@
+; An unfinished long string may recover its contents as ordinary delimiters.
+; Only a literal-prefixed recovery owner covers unnamed long-string bytes.
+((ERROR "[[") @preserve
+  (#match? @preserve "^(?:=[ \\t]*)?\\[=*\\[")
+  (#is-not? indent.matchesCurrentRow startPosition)
+  (#set! indent.force true))
+
+; A payload word may be recovered just outside that owner in an assignment.
+(_ (ERROR "[[") (_) @preserve
+  (#is? indent.reindent true)
+  (#set! indent.force true))
+
+(ERROR "[[" ["(" ")" "{" "}"] @match.next
+  (#set! indent.match startPosition)
+  (#set! capture.final true))
+
+(ERROR "[[" @match.next
+  (#set! indent.match startPosition))
+(ERROR (ERROR "[[") ["(" ")" "{" "}"] @match.next
+  (#set! indent.match startPosition))
+
 ; Preserve the exact contents of multiline literals during explicit reindent.
 ([(string) (comment)] @preserve
   (#is? indent.reindent true)
