@@ -1,3 +1,9 @@
+; Preserve the exact contents of multiline literals during explicit reindent.
+([(string) (comment)] @preserve
+  (#is? indent.reindent true)
+  (#is-not? indent.matchesCurrentRow startPosition)
+  (#set! indent.force true))
+
 ; Written by hand rather than ported: upstream's indent model
 ; (@indent.begin/.end/.branch) does not map onto this one.
 ;
