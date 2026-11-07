@@ -2,6 +2,9 @@
 Source: https://github.com/tree-sitter-grammars/tree-sitter-lua
 Revision: v0.5.0
 
+Parser source: github:tree-sitter-grammars/tree-sitter-lua#v0.5.0
+Resolved commit: 10fe0054734eec83049514ea2e718b2a56acd0c9
+
 Original file: LICENSE.md
 
 The MIT License (MIT)
